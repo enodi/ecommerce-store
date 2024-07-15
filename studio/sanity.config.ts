@@ -7,8 +7,8 @@ export default defineConfig({
   name: 'default',
   title: 'ecommerce-store',
 
-  projectId: 'j66ee8q0',
-  dataset: 'production',
+  projectId: "j66ee8q0",
+  dataset: "production",
 
   plugins: [structureTool(), visionTool()],
 

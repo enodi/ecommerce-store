@@ -10,3 +10,8 @@ export type ProductType = {
   description: string,
   price: number,
 };
+
+export type CategoryType = {
+  _id: string,
+  name: string,
+};
