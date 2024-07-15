@@ -20,12 +20,14 @@ export default function Home() {
   const [cartItems, setCartItems] = useState<ProductType[]>([]);
   const [cartItemsCount, setCartItemsCount] = useState<number>(0);
 
-  const localStorageCartItem = localStorage.getItem("cart");
+  const localStorageCartItem =
+    typeof window !== "undefined" && localStorage.getItem("cart");
   const parsedCartItems =
     localStorageCartItem && JSON.parse(localStorageCartItem);
   const itemsInCart = cartItems.length > 0 ? cartItems : parsedCartItems;
 
-  const localStorageCartItemCount = localStorage.getItem("cartCount");
+  const localStorageCartItemCount =
+    typeof window !== "undefined" && localStorage.getItem("cartCount");
   const cartCount: number =
     localStorageCartItemCount && JSON.parse(localStorageCartItemCount);
   const itemCount = cartItemsCount || cartCount;
@@ -90,8 +92,10 @@ export default function Home() {
   };
 
   const updateLocalStorage = (count: number, cart: ProductType[]) => {
-    localStorage.setItem("cartCount", JSON.stringify(count));
-    localStorage.setItem("cart", JSON.stringify(cart));
+    if (typeof window !== "undefined") {
+      localStorage.setItem("cartCount", JSON.stringify(count));
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }
   };
 
   return (

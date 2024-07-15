@@ -10,7 +10,8 @@ interface Props {
 }
 
 function Products({ products, selectedCategory, addCartItem }: Props) {
-  const localStorageCart = localStorage.getItem("cart");
+  const localStorageCart =
+    typeof window !== "undefined" && localStorage.getItem("cart");
   const itemsInCart = localStorageCart ? JSON.parse(localStorageCart) : [];
   const cartIds: string[] =
     itemsInCart.map((item: ProductType) => item._id) || [];
